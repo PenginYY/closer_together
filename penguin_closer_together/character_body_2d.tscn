@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://clix7mypefmpr"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_cuft1"]
+[ext_resource type="Texture2D" uid="uid://qrbsx1xw7jpl" path="res://rock_penguin_frond_l.png" id="2_2vvv1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boxxa"]
+radius = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2wu8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0m4d"]
+bg_color = Color(0, 0.678431, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hq51i"]
+radius = 19.0263
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 3
+script = ExtResource("1_cuft1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2vvv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_boxxa")
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0.411765, 1)
+self_modulate = Color(0.0823529, 1, 0.0784314, 1)
+offset_left = -23.0
+offset_top = -24.0
+offset_right = 133.0
+offset_bottom = 3.0
+scale = Vector2(0.3, 0.2)
+theme_override_styles/background = SubResource("StyleBoxFlat_q2wu8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r0m4d")
+value = 100.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_hq51i")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

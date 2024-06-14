@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://4jwii0bvgph"]
+
+[ext_resource type="Script" path="res://chick.gd" id="1_451hj"]
+[ext_resource type="Texture2D" uid="uid://bv4eg2jprf0pv" path="res://chick_penguin_front_L.png" id="2_l1nj6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxuci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l1nj6")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkxq0"]
+radius = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4y145"]
+height = 36.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_451hj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kxuci")
+animation = &"move"
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wkxq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_4y145")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://tpfyc567d6xx"]
+
+[ext_resource type="PackedScene" uid="uid://d04jjlgdiwaf4" path="res://tile_map.tscn" id="1_ufwqb"]
+[ext_resource type="PackedScene" uid="uid://clix7mypefmpr" path="res://character_body_2d.tscn" id="2_op2hv"]
+[ext_resource type="PackedScene" uid="uid://si2x008vfo65" path="res://bird_enemy.tscn" id="3_25l42"]
+[ext_resource type="PackedScene" uid="uid://4jwii0bvgph" path="res://chick.tscn" id="4_840xu"]
+
+[node name="main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -60)
+zoom = Vector2(2, 2)
+
+[node name="TileMap" parent="." instance=ExtResource("1_ufwqb")]
+
+[node name="CharacterBody2D" parent="TileMap" instance=ExtResource("2_op2hv")]
+unique_name_in_owner = true
+position = Vector2(62, -47)
+
+[node name="bird_enemy" parent="." instance=ExtResource("3_25l42")]
+z_index = 1
+position = Vector2(-81, -62)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_840xu")]
+position = Vector2(50, -39)
+
+[node name="bird_collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bird_collision"]
+polygon = PackedVector2Array(-198, -204, -249, -100, -236, -10, -173, 70, -96, 92, -25, 96, 52, 97, 139, 91, 232, 64, 251, -37, 224, -142, 205, -204, 119, -206, -76, -196, -185, -210, -234, -197, -202, -220, -78, -228, 120, -250, 237, -213, 281, -92, 287, 12, 232, 87, 33, 121, -105, 117, -211, 82, -259, 5, -260, -73, -268, -132, -224, -187)

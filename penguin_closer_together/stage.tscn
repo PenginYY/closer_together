@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dft71uq3763of"]
+
+[ext_resource type="Shader" path="res://water.gdshader" id="1_mwy05"]
+[ext_resource type="Texture2D" uid="uid://psaa40gvlqdt" path="res://icon.svg" id="2_p7xvk"]
+[ext_resource type="PackedScene" uid="uid://d04jjlgdiwaf4" path="res://tile_map.tscn" id="3_0krsp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11xub"]
+shader = ExtResource("1_mwy05")
+
+[node name="stage" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_11xub")
+position = Vector2(572, 326)
+scale = Vector2(9.04688, 5.1875)
+texture = ExtResource("2_p7xvk")
+
+[node name="TileMap" parent="." instance=ExtResource("3_0krsp")]
+position = Vector2(566, 332)

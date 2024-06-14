@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://si2x008vfo65"]
+
+[ext_resource type="Script" path="res://bird_enemy.gd" id="1_th8if"]
+[ext_resource type="Texture2D" uid="uid://dk3i6heppnu8s" path="res://sprite_giant_petrel.png" id="2_dq3tk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ffql"]
+atlas = ExtResource("2_dq3tk")
+region = Rect2(114, 0, 57, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2d8j"]
+atlas = ExtResource("2_dq3tk")
+region = Rect2(0, 0, 57, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iqxl"]
+atlas = ExtResource("2_dq3tk")
+region = Rect2(228, 0, 57, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7qpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ffql")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2d8j")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iqxl")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rko34"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujpme"]
+radius = 3.16228
+
+[node name="bird_enemy" type="CharacterBody2D"]
+script = ExtResource("1_th8if")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+sprite_frames = SubResource("SpriteFrames_q7qpn")
+animation = &"attack"
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(9, 11)
+shape = SubResource("CircleShape2D_rko34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 11)
+shape = SubResource("CircleShape2D_ujpme")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_shape_entered" from="detection_area" to="." method="_on_detection_area_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
