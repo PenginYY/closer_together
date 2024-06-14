@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyln5el4i2wri"]
+
+[ext_resource type="Texture2D" uid="uid://swfx1dr2gps3" path="res://icon.svg" id="1_vqk7g"]
+[ext_resource type="Texture2D" uid="uid://ds10ilauxtsc8" path="res://tile_2.png" id="2_ar4m5"]
+[ext_resource type="PackedScene" uid="uid://cw8rv73sdcnwc" path="res://scenes/main_character.tscn" id="3_3h3rl"]
+[ext_resource type="Script" path="res://scenes/TileMap.gd" id="3_om84e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv3g4"]
+texture = ExtResource("2_ar4m5")
+margins = Vector2i(1, 4)
+texture_region_size = Vector2i(40, 35)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -6)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-19.25, -0.25, 0.44545, -10.0226, 19.75, -0.25, 0.396851, 10.1197)
+
+[sub_resource type="TileSet" id="TileSet_8r5xl"]
+tile_shape = 1
+tile_layout = 5
+tile_offset_axis = 1
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_cv3g4")
+
+[node name="Node" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.290196, 0.290196, 0.290196, 1)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vqk7g")
+stretch_mode = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(532, 358)
+tile_set = SubResource("TileSet_8r5xl")
+format = 2
+layer_0/name = "level0"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(131070, 0, 0, 65534, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, 0, 0, 0, 65535, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 1, 0, 0, -65535, 0, 0, -131071, 0, 0, -131072, 0, 0, -65537, 0, 0, -65538, 0, 0, -65539, 0, 0, -3, 0, 0, 131069, 0, 0, 65533, 0, 0, 196606, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 131072, 0, 0, 196607, 0, 0, 131073, 0, 0, -196607, 0, 0, -196608, 0, 0, -131073, 0, 0, -131074, 0, 0, -131075, 0, 0, -131076, 0, 0, -65540, 0, 0, -4, 0, 0, 65532, 0, 0, -5, 0, 0, -65541, 0, 0, -131077, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -262147, 0, 0, -262148, 0, 0, -327683, 0, 0, -262146, 0, 0, -196610, 0, 0, -262145, 0, 0, -327680, 0, 0, -393216, 0, 0, -327681, 0, 0, -327682, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -196606, 0, 0, -196605, 0, 0, -131069, 0, 0, -131070, 0, 0, -65534, 0, 0, 2, 0, 0, 65531, 0, 0, 131067, 0, 0, 131068, 0, 0, 196604, 0, 0, 196605, 0, 0, 262141, 0, 0, 327678, 0, 0, 327679, 0, 0, 196609, 0, 0, 196610, 0, 0, 131074, 0, 0, 65538, 0, 0, 65539, 0, 0, 3, 0, 0, -65533, 0, 0, -65532, 0, 0, -262141, 0, 0, -262142, 0, 0, -327678, 0, 0, -327679, 0, 0, -393215, 0, 0, -327684, 0, 0, -327685, 0, 0, -262149, 0, 0, -262150, 0, 0, -196614, 0, 0, -131078, 0, 0, -65542, 0, 0, -6, 0, 0, -65543, 0, 0, -131079, 0, 0, -196615, 0, 0, -393219, 0, 0, -393218, 0, 0, -393220, 0, 0, -458756, 0, 0, -458755, 0, 0, -393217, 0, 0, -458753, 0, 0, -524288, 0, 0, -458752, 0, 0, -458754, 0, 0, -524289, 0, 0, -524290, 0, 0, -524291, 0, 0, -458751, 0, 0, -393214, 0, 0, -327677, 0, 0)
+layer_1/name = "level1"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 1
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-131075, 0, 0, -131074, 0, 0, -196610, 0, 0, -196611, 0, 0, -262147, 0, 0)
+layer_2/name = "level2"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = true
+layer_2/y_sort_origin = 2
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("3_om84e")
+
+[node name="CharacterBody2D" parent="TileMap" instance=ExtResource("3_3h3rl")]
+position = Vector2(-30, -36)
